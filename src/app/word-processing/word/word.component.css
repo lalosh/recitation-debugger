@@ -1,0 +1,29 @@
+div {
+    display: inline;
+    font-size: 5vw;
+    transition: all 0.5s ease-in-out;
+    direction: rtl;
+}
+
+div::after {
+    content: ' ';
+}
+
+span {
+    font-family: conv_original-hafs;
+}
+
+.active-letter {
+    color: red;
+}
+
+span:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px 2px gray;
+}
+
+
+div:hover {
+    /* font-size: 7vw; */
+    /* letter-spacing: 8px; */
+}

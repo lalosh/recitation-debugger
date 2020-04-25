@@ -1,0 +1,9 @@
+<div>
+
+    <span
+    *ngFor="let letter of split(word); index as i"
+    (click)="letterClickHandler(letter, i)"
+    [class.active-letter]="wordState[i] == 0"
+    >{{letter}}</span>
+
+</div>

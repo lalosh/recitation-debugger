@@ -1,2 +1,50 @@
 
-<sentence [sentence]="baqara"></sentence>
+<div
+style="display: inline; direction: rtl;"
+*ngFor="let verse of currentPageContent | async; index as i"
+>
+    <sentence [sentence]="verse" [number]="i"></sentence>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>hello</p>
+<p>hello</p>
+<p>hello</p>
+<p>hello</p>
+<p>hello</p>
+
+<span
+style="font-size: 100px;"
+(pointerdown)="pointerdown($event)"
+(pointerup)="pointerup($event)"
+[ngStyle]="{ color: state == 1 ? 'blue' : 'red' }"
+>
+    H
+</span>
+
+<button
+(drag)="onDrag($event)"
+>hello</button> -->
+
+<!-- <p 
+(click)="normalClick($event)"
+(ctrl-click)="ctrlClick($event)"
+(shift-click)="shiftClick($event)"
+(meta-click)="metaClick($event)"
+>hello man</p> -->

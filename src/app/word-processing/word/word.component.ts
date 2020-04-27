@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { downwardLetter } from 'src/app/actions';
 
 @Component({
   selector: 'word',
@@ -8,10 +11,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WordComponent implements OnInit {
 
   @Input() word;
-
+  @Input() verse;
+  @Input() wordPosition;
+  
   wordState;
 
-  constructor() { }
+  page: Observable<number>;
+  currentUser: Observable<number>;
+
+  constructor(
+    private store: Store<{ page: number, currentUser: number }>
+  ) {
+    this.page = this.store.pipe(select('page'));
+    this.currentUser = this.store.pipe(select('currentUser'));
+  }
+
 
   ngOnInit(): void {
     this.wordState = this.split(this.word);
@@ -21,8 +35,27 @@ export class WordComponent implements OnInit {
     return string.split('');
   }
 
-  letterClickHandler(letter, i) {
-    this.wordState[i] = this.wordState[i] == 0 ? letter : 0;
+  downward(letter, index) {
+    this.wordState[index] = -1;
+
+    this.store.dispatch(
+      downwardLetter({
+        userId: '23',
+        page: '1',
+        verse: String(this.verse+1),
+        letterIndex: index,
+        wordPosition: this.wordPosition
+      })
+    );
   }
+
+  upward(letter, index) {
+    this.wordState[index] = 1;
+  }
+
+  reset(letter, index) {
+    this.wordState[index] = 0;
+  }
+
 
 }

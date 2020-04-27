@@ -1,4 +1,13 @@
-@font-face {
-    font-family: "conv_original-hafs";
-    src: url("assets/fonts/original-hafs.woff") format('woff');
+
+::selection {
+    background: red; /* WebKit/Blink Browsers */
+}
+
+span{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

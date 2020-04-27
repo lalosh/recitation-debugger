@@ -1,9 +1,15 @@
-<div>
+<div 
+(click)="initializeVerse()"
+>
   
     <word
-    *ngFor="let word of getWords(sentence)"
+    *ngFor="let word of getWords(sentence); index as i"
     [word]="word"
+    [verse]="number"
+    [wordPosition]="i"
     >
     </word>
+
+    <span>{{convertNumber(number+1)}}</span>
 
 </div>

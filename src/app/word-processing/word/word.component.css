@@ -10,11 +10,15 @@ div::after {
 }
 
 span {
-    font-family: conv_original-hafs;
+    /* font-family: conv_original-hafs; */
 }
 
-.active-letter {
+.downward-letter {
     color: red;
+}
+
+.upward-letter {
+    color: blue;
 }
 
 span:hover {

@@ -2,8 +2,11 @@
 
     <span
     *ngFor="let letter of split(word); index as i"
-    (click)="letterClickHandler(letter, i)"
-    [class.active-letter]="wordState[i] == 0"
+    (ctrl-click)="downward(letter, i)"
+    (shift-click)="upward(letter, i)"
+    (meta-click)="reset(letter, i)"
+    [class.upward-letter]="wordState[i] == 1"
+    [class.downward-letter]="wordState[i] == -1"
     >{{letter}}</span>
 
 </div>

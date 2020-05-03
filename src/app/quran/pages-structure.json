@@ -1,0 +1,22 @@
+{
+    "1": {
+        "surasIds": [ 1 ],
+        "versesIds": [ [1,7] ],
+        "sectionId": 1
+    },
+    "2": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [1,5] ],
+        "sectionId": 1
+    },
+    "3": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [6,14] ],
+        "sectionId": 1
+    },
+    "4": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [15,26] ],
+        "sectionId": 1
+    }
+}

@@ -1,0 +1,14 @@
+<span class="make-space-after">
+
+    <span
+    class="letter"
+    *ngFor="let letter of split(word); index as letterPosition"
+    (ctrl-click)="downLetter(letter, letterPosition)"
+    (shift-click)="upLetter(letter, letterPosition)"
+    (meta-click)="resetLetter(letter, letterPosition)"
+    [class.blue]="(wordMask | async)[letterPosition] == '1'"
+    [class.red]="(wordMask | async)[letterPosition] == '2'"
+    >{{letter}}</span>
+
+
+</span>

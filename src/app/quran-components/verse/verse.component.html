@@ -1,0 +1,14 @@
+<span>
+
+    <verse-word
+    *ngFor="let word of split((verse | async)); index as wordPosition"
+    [suraId]="suraId"
+    [verseId]="verseId"
+    [verse]="verse | async"
+    [wordPosition]="wordPosition"
+    [word]="word"
+    >
+    </verse-word>
+    
+    {{ convertToHindiNumber(verseId + 1) }} 
+</span>

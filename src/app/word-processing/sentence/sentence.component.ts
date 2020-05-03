@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { convertArabicToHindiNumbers } from 'src/app/utils';
 import { Store, select } from '@ngrx/store';
-import { initVerse } from 'src/app/actions';
 import { Observable, combineLatest } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -41,17 +40,17 @@ export class SentenceComponent implements OnInit {
   initializeVerse() {
     if (this.lock){
       this.lock = false;
-      combineLatest(this.page, this.currentUser)
-        .pipe(take(1))
-        .subscribe(([page, currentUser]) => this.store.dispatch(
-          initVerse({
-            userId: String(currentUser),
-            page: String(page),
-            verse: String(this.number + 1),
-            wordsCount: this.sentence.split(' ').length,
-            lettersCount: this.sentence.length
-          })
-        ));
+      // combineLatest(this.page, this.currentUser)
+      //   .pipe(take(1))
+      //   .subscribe(([page, currentUser]) => this.store.dispatch(
+      //     initVerse({
+      //       userId: String(currentUser),
+      //       page: String(page),
+      //       verse: String(this.number + 1),
+      //       wordsCount: this.sentence.split(' ').length,
+      //       lettersCount: this.sentence.length
+      //     })
+      //   ));
     }
   }
 }

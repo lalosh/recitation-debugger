@@ -15,6 +15,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { rootReducer } from './reducers';
 import { rootEffects } from './effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuraComponent } from './quran-components/sura/sura.component';
+import { VerseComponent } from './quran-components/verse/verse.component';
+import { VerseWordComponent } from './quran-components/verse-word/verse-word.component';
+import { storageSync } from './meta-reducers/storage-sync';
 
 @NgModule({
   declarations: [
@@ -23,19 +28,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SentenceComponent,
     CtrlClickDirective,
     ShiftClickDirective,
-    MetaClickDirective
+    MetaClickDirective,
+    SuraComponent,
+    VerseComponent,
+    VerseWordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 
-    StoreModule.forRoot(rootReducer),
+    StoreModule.forRoot(rootReducer, {
+      metaReducers: [storageSync],
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
     EffectsModule.forRoot(rootEffects),
     BrowserAnimationsModule,
-    
+
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

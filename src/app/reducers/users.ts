@@ -1,71 +1,211 @@
 import { createReducer, on } from "@ngrx/store";
-import { initVerse, downwardLetter } from '../actions';
-
-function downwardLetterInString(senetence, wordPosition, letterPosition){
-    senetence = senetence.split(' ');
-    senetence[wordPosition][letterPosition] = '-1';
-    let res = senetence.join(' ');
-
-    console.warn(res)
-    return res;
-}
+import { upLetter, downLetter, resetLetter } from '../actions';
+import _ from 'lodash';
+import moment from 'moment';
 
 const _usersReducer = createReducer(
     {
-        '23': {
-            pages: {
-                '1': {
-                    '1': [],
-                    '2': [],
-                    '3': [],
-                    '4': [],
-                    '5': [],
-                    '6': [],
-                    '7': []
-                }
-            },
-            username: 'lalosh'
+        23: {
+            name: "lalosh",
+            age: "25",
+            picture: "",
+            stats: {},
+            masks: {}
+        },
+        77: {
+            name: "moied",
+            age: "19",
+            picture: "",
+            stats: {},
+            masks: {}
         }
     },
 
-    on(initVerse, (state, action) => {
-  
-        return {
-            ...state,
-            [action.userId]: {
-                ...state[action.userId],
-                pages: {
-                    ...state[action.userId].pages,
-                    [action.page]: {
-                        ...state[action.userId].pages[action.page],
-                        [action.verse]: new Array(action.wordsCount).fill(0).map(word => new Array(action.lettersCount).fill(0))
-                    }
-                }
+    on(upLetter, (state, action) => {
+
+        try {
+
+            let user = _.cloneDeep(state[action.userId]);
+
+            let suraId = String(action.suraId);
+            let verseId = String(action.verseId);
+
+            if (!user.masks[suraId])
+                user.masks[suraId] = {}
+
+            let mask = user.masks[suraId][verseId] || undefined;
+
+            if (!mask) {
+                //make new mask
+                // verse is a string
+                mask = action.verse.split(' ').map(word => new Array(word.length).fill(0).join('')).join(' ');
             }
+
+
+            // immutable change for the string of mask
+            let _newMask = mask
+                .split(' ')
+                .map(
+                    (wordMask, wordPosition) =>
+
+                        wordPosition == action.wordPosition ?
+
+                            wordMask
+                                .split('')
+                                .map(
+                                    (letter, letterPosition) =>
+                                        letterPosition == action.letterPosition ? '1' : letter
+                                )
+                                .join('')
+
+                            : wordMask
+                )
+                .join(' ');
+
+
+            user.masks[suraId][verseId] = _newMask;
+            
+            let now = moment().format('DD-MM-YYYY');
+            
+            if(!user.stats[now]) user.stats[now] = {};
+
+            if(!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0};
+
+            user.stats[now][action.letter].up = user.stats[now][action.letter].up + 1;
+
+            return {
+                ...state,
+                [action.userId]: user
+            }
+
+        } catch (error) {
+            console.error(error);
+            return state;
         }
     }),
 
-    on(downwardLetter, (state, action) => {
+    on(downLetter, (state, action) => {
 
-        return {
-            ...state,
-            [action.userId]: {
-                ...state[action.userId],
-                pages: {
-                    ...state[action.userId].pages,
-                    [action.page]: {
-                        ...state[action.userId].pages[action.page],
-                        [action.verse]: downwardLetterInString(state[action.userId].pages[action.page][action.verse], action.wordPosition, action.letterIndex)
-                    }
-                }
+        try {
+
+            let user = _.cloneDeep(state[action.userId]);
+
+            let suraId = String(action.suraId);
+            let verseId = String(action.verseId);
+
+            if (!user.masks[suraId])
+                user.masks[suraId] = {}
+
+            let mask = user.masks[suraId][verseId] || undefined;
+
+            if (!mask) {
+                //make new mask
+                // verse is a string
+                mask = action.verse.split(' ').map(word => new Array(word.length).fill(0).join('')).join(' ');
             }
-        }
-    })
 
+
+            // immutable change for the string of mask
+            let _newMask = mask
+                .split(' ')
+                .map(
+                    (wordMask, wordPosition) =>
+
+                        wordPosition == action.wordPosition ?
+
+                            wordMask
+                                .split('')
+                                .map(
+                                    (letter, letterPosition) =>
+                                        letterPosition == action.letterPosition ? '2' : letter
+                                )
+                                .join('')
+
+                            : wordMask
+                )
+                .join(' ');
+
+
+            user.masks[suraId][verseId] = _newMask;
+
+            let now = moment().format('DD-MM-YYYY');
+            
+            if(!user.stats[now]) user.stats[now] = {};
+
+            if(!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0};
+
+            user.stats[now][action.letter].down = user.stats[now][action.letter].down + 1;
+
+
+            return {
+                ...state,
+                [action.userId]: user
+            }
+
+        } catch (error) {
+            console.error(error);
+            return state;
+        }
+    }),
+
+    on(resetLetter, (state, action) => {
+
+        try {
+
+            let user = _.cloneDeep(state[action.userId]);
+
+            let suraId = String(action.suraId);
+            let verseId = String(action.verseId);
+
+            if (!user.masks[suraId])
+                user.masks[suraId] = {}
+
+            let mask = user.masks[suraId][verseId] || undefined;
+
+            if (!mask) {
+                //make new mask
+                // verse is a string
+                mask = action.verse.split(' ').map(word => new Array(word.length).fill(0).join('')).join(' ');
+            }
+
+
+            // immutable change for the string of mask
+            let _newMask = mask
+                .split(' ')
+                .map(
+                    (wordMask, wordPosition) =>
+
+                        wordPosition == action.wordPosition ?
+
+                            wordMask
+                                .split('')
+                                .map(
+                                    (letter, letterPosition) =>
+                                        letterPosition == action.letterPosition ? '0' : letter
+                                )
+                                .join('')
+
+                            : wordMask
+                )
+                .join(' ');
+
+
+            user.masks[suraId][verseId] = _newMask;
+
+            return {
+                ...state,
+                [action.userId]: user
+            }
+
+        } catch (error) {
+            console.error(error);
+            return state;
+        }
+    }),
 );
 
 
 
-export function usersReducer(state, action){
+export function usersReducer(state, action) {
     return _usersReducer(state, action);
 }

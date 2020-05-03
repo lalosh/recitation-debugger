@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { downwardLetter } from 'src/app/actions';
 
 @Component({
   selector: 'word',
@@ -38,15 +37,15 @@ export class WordComponent implements OnInit {
   downward(letter, index) {
     this.wordState[index] = -1;
 
-    this.store.dispatch(
-      downwardLetter({
-        userId: '23',
-        page: '1',
-        verse: String(this.verse+1),
-        letterIndex: index,
-        wordPosition: this.wordPosition
-      })
-    );
+    // this.store.dispatch(
+    //   downwardLetter({
+    //     userId: '23',
+    //     page: '1',
+    //     verse: String(this.verse+1),
+    //     letterIndex: index,
+    //     wordPosition: this.wordPosition
+    //   })
+    // );
   }
 
   upward(letter, index) {

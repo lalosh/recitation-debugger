@@ -1,50 +1,34 @@
+<div class="app-container">
 
-<div
-style="display: inline; direction: rtl;"
-*ngFor="let verse of currentPageContent | async; index as i"
->
-    <sentence [sentence]="verse" [number]="i"></sentence>
+
+    <nav>
+        filters
+        <input type="text" [formControl]="pageInput">
+    </nav>
+
+    <div class="page-container">
+        page container
+
+        <sura
+        *ngFor="let sura of pageSuras | async"
+        [suraId]="sura.suraId"
+        [versesIds]="sura.versesIds"
+        ></sura>
+        
+    </div>
+
+    <div class="users-container">
+
+        <div>
+            current User: {{ (users | async)[currentUser | async]['name'] }}
+        </div>
+
+        <div
+        *ngFor="let userId of keys(users | async)">
+            <p (click)="changeCurrentUser(userId)">{{ (users | async)[userId]['name'] }}</p>
+        </div>
+
+    </div>
+
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <p>hello</p>
-<p>hello</p>
-<p>hello</p>
-<p>hello</p>
-<p>hello</p>
-
-<span
-style="font-size: 100px;"
-(pointerdown)="pointerdown($event)"
-(pointerup)="pointerup($event)"
-[ngStyle]="{ color: state == 1 ? 'blue' : 'red' }"
->
-    H
-</span>
-
-<button
-(drag)="onDrag($event)"
->hello</button> -->
-
-<!-- <p 
-(click)="normalClick($event)"
-(ctrl-click)="ctrlClick($event)"
-(shift-click)="shiftClick($event)"
-(meta-click)="metaClick($event)"
->hello man</p> -->

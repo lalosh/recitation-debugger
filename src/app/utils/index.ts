@@ -19,6 +19,7 @@ export function convertArabicToHindiNumbers(arabicNumber) {
     return numberAsString
         .split('')
         .map(letter => numbersMapper[letter])
+        .reverse()
         .join('');
 }
 

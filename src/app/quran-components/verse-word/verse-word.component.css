@@ -1,0 +1,20 @@
+span.make-space-after::after{
+    content: ' '
+}
+
+.letter{
+
+}
+
+.letter:hover{
+    cursor: pointer;
+    text-shadow: 2px 2px 2px gray;;
+}
+
+.blue{
+    color: blue;
+}
+
+.red{
+    color: red;
+}

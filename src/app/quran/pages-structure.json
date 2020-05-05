@@ -48,5 +48,10 @@
         "surasIds": [ 2 ],
         "versesIds": [ [62,69] ],
         "sectionId": 1
+    },
+    "11": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [70,77] ],
+        "sectionId": 1
     }
 }

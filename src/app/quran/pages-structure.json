@@ -11,12 +11,42 @@
     },
     "3": {
         "surasIds": [ 2 ],
-        "versesIds": [ [6,14] ],
+        "versesIds": [ [6,16] ],
         "sectionId": 1
     },
     "4": {
         "surasIds": [ 2 ],
-        "versesIds": [ [15,26] ],
+        "versesIds": [ [17,24] ],
+        "sectionId": 1
+    },
+    "5": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [25,29] ],
+        "sectionId": 1
+    },
+    "6": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [30,37] ],
+        "sectionId": 1
+    },
+    "7": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [38,48] ],
+        "sectionId": 1
+    },
+    "8": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [49,57] ],
+        "sectionId": 1
+    },
+    "9": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [58,61] ],
+        "sectionId": 1
+    },
+    "10": {
+        "surasIds": [ 2 ],
+        "versesIds": [ [62,69] ],
         "sectionId": 1
     }
 }

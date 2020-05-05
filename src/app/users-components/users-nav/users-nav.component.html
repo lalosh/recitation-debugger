@@ -1,0 +1,13 @@
+<div
+*ngFor="let userId of keys(users | async)"
+class="user-item"
+[class.selected-user]="userId == (currentUser | async)"
+(click)="changeCurrentUser(userId)"
+>
+    <img 
+    [routerLink]="['users/' + userId]"
+    src="https://via.placeholder.com/50x50" 
+    alt="userImage"
+    />
+    <p>{{ (users | async)[userId]['name'] }}</p>
+</div>

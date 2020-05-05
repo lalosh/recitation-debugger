@@ -13,5 +13,5 @@ $custom-theme: mat-light-theme($custom-primary, $custom-accent);
 @include angular-material-theme($custom-theme);
 
 .mat-typography {
-    font: 400 50px/50px "conv_original-hafs", sans-serif;
+    // font: 400 70px/70px "conv_original-hafs", sans-serif;
 }

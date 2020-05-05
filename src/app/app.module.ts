@@ -20,6 +20,9 @@ import { SuraComponent } from './quran-components/sura/sura.component';
 import { VerseComponent } from './quran-components/verse/verse.component';
 import { VerseWordComponent } from './quran-components/verse-word/verse-word.component';
 import { storageSync } from './meta-reducers/storage-sync';
+import { UsersNavComponent } from './users-components/users-nav/users-nav.component';
+import { BrowseUsersComponent } from './users-components/browse-users/browse-users.component';
+import { QuranReaderComponent } from './quran-components/quran-reader/quran-reader.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { storageSync } from './meta-reducers/storage-sync';
     MetaClickDirective,
     SuraComponent,
     VerseComponent,
-    VerseWordComponent
+    VerseWordComponent,
+    UsersNavComponent,
+    BrowseUsersComponent,
+    QuranReaderComponent
   ],
   imports: [
     BrowserModule,

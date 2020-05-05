@@ -8,17 +8,45 @@ const _usersReducer = createReducer(
         23: {
             name: "lalosh",
             age: "25",
-            picture: "",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
             stats: {},
             masks: {}
         },
-        77: {
-            name: "moied",
-            age: "19",
-            picture: "",
+        1: {
+            name: "محمد مزاوي",
+            age: "25",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
             stats: {},
             masks: {}
-        }
+        },
+        2: {
+            name: "علي محمد الخبي",
+            age: "25",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
+            stats: {},
+            masks: {}
+        },
+        3: {
+            name: "هشام جركو",
+            age: "25",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
+            stats: {},
+            masks: {},
+        },
+        4: {
+            name: "أسامة الحوري",
+            age: "25",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
+            stats: {},
+            masks: {}
+        },
+        5: {
+            name: "معن بيرقدار",
+            age: "25",
+            picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFD1Ofi7-DsfgVE7CojIqMuNGYEN1N4dGyec3hJQebtISancyF&usqp=CAU",
+            stats: {},
+            masks: {}
+        },
     },
 
     on(upLetter, (state, action) => {
@@ -64,12 +92,12 @@ const _usersReducer = createReducer(
 
 
             user.masks[suraId][verseId] = _newMask;
-            
-            let now = moment().format('DD-MM-YYYY');
-            
-            if(!user.stats[now]) user.stats[now] = {};
 
-            if(!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0};
+            let now = moment().format('DD-MM-YYYY');
+
+            if (!user.stats[now]) user.stats[now] = {};
+
+            if (!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0 };
 
             user.stats[now][action.letter].up = user.stats[now][action.letter].up + 1;
 
@@ -129,10 +157,10 @@ const _usersReducer = createReducer(
             user.masks[suraId][verseId] = _newMask;
 
             let now = moment().format('DD-MM-YYYY');
-            
-            if(!user.stats[now]) user.stats[now] = {};
 
-            if(!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0};
+            if (!user.stats[now]) user.stats[now] = {};
+
+            if (!user.stats[now][action.letter]) user.stats[now][action.letter] = { up: 0, down: 0 };
 
             user.stats[now][action.letter].down = user.stats[now][action.letter].down + 1;
 
